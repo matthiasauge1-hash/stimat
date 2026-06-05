@@ -1,0 +1,5 @@
+cadquery
+fastapi
+uvicorn[standard]
+python-multipart
+numpy
