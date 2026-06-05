@@ -4,7 +4,8 @@ API FastAPI - Moteur d'analyse STEP + Devis avec pays
 
 from fastapi import FastAPI, UploadFile, File, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 import tempfile, os, traceback
 from dataclasses import asdict
 
@@ -21,9 +22,14 @@ app.add_middleware(
 )
 
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 def root():
-    return {"status": "ok", "version": "2.1.0"}
+    """Sert le frontend index.html."""
+    index_path = os.path.join(os.path.dirname(__file__), "..", "index.html")
+    if os.path.exists(index_path):
+        with open(index_path, "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read())
+    return HTMLResponse(content="<h1>Stima API</h1><p>Frontend non trouvé.</p>")
 
 
 @app.get("/countries")
