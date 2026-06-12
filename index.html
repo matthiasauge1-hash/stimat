@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STEP Analyzer — Reconnaissance de procédé</title>
+  <title>STEP Analyzer â€” Reconnaissance de procÃ©dÃ©</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -226,8 +226,8 @@
     .score-details{display:flex;flex-direction:column;gap:4px}
     .score-reason,.score-warning{font-size:.76rem;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
     .score-reason{color:var(--text-dim)} .score-warning{color:#ff9a3a}
-    .score-reason::before{content:'✔';color:var(--green);flex-shrink:0;font-size:.68rem;margin-top:2px}
-    .score-warning::before{content:'⚠';flex-shrink:0;font-size:.68rem;margin-top:2px}
+    .score-reason::before{content:'âœ”';color:var(--green);flex-shrink:0;font-size:.68rem;margin-top:2px}
+    .score-warning::before{content:'âš ';flex-shrink:0;font-size:.68rem;margin-top:2px}
 
     /* Devis */
     .devis-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px}
@@ -259,7 +259,7 @@
     .devis-line-detail{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);line-height:1.4}
     .devis-sep{height:1px;background:var(--border);margin:2px 0}
 
-    /* Barre de répartition */
+    /* Barre de rÃ©partition */
     .devis-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin:10px 0 4px;gap:2px}
     .devis-bar-seg{height:100%;border-radius:2px;transition:width .8s cubic-bezier(.22,1,.36,1)}
     .devis-bar-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px}
@@ -270,7 +270,7 @@
     .devis-time svg{width:12px;height:12px;stroke:var(--text-dim);fill:none;stroke-width:2}
     .devis-notes{display:flex;flex-direction:column;gap:5px;margin-top:10px;border-top:1px solid var(--border);padding-top:10px}
     .devis-note{font-size:.72rem;color:#ff9a3a;display:flex;gap:6px;line-height:1.4}
-    .devis-note::before{content:'ℹ';flex-shrink:0}
+    .devis-note::before{content:'â„¹';flex-shrink:0}
     .devis-unitaire{font-family:var(--mono);font-size:.65rem;color:var(--text-dim);margin-top:8px;border-top:1px solid var(--border);padding-top:8px}
 
     .btn-reset{display:flex;align-items:center;gap:8px;padding:12px 24px;background:transparent;border:1px solid var(--border2);color:var(--text-dim);font-family:var(--sans);font-size:.85rem;font-weight:600;border-radius:8px;cursor:pointer;transition:border-color .2s,color .2s;letter-spacing:.04em}
@@ -280,7 +280,56 @@
 
 
 
-    /* ── Finition panel ── */
+
+    /* â”€â”€ ArchimÃ¨de â”€â”€ */
+    .archi-panel{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:32px}
+    .archi-toggle{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;margin-bottom:0}
+    .archi-toggle input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
+    .archi-toggle-label{font-size:.92rem;font-weight:700;color:var(--text-head)}
+    .archi-toggle-sub{font-family:var(--mono);font-size:.68rem;color:var(--text-dim);margin-left:30px;margin-top:2px}
+    .archi-body{display:none;margin-top:20px;border-top:1px solid var(--border);padding-top:20px}
+    .archi-body.visible{display:block}
+    .archi-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+    .archi-group{display:flex;flex-direction:column;gap:6px}
+    .archi-label{font-family:var(--mono);font-size:.65rem;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase}
+    .archi-fluides{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .archi-fluide-btn{font-family:var(--mono);font-size:.7rem;padding:5px 12px;border:1px solid var(--border2);border-radius:6px;background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;letter-spacing:.06em}
+    .archi-fluide-btn:hover{border-color:var(--border);color:var(--text)}
+    .archi-fluide-btn.active{border-color:#00d4ff;color:#00d4ff;background:rgba(0,212,255,.08)}
+    .archi-input{background:var(--bg3);border:1px solid var(--border2);color:var(--text-head);font-family:var(--mono);font-size:.82rem;padding:8px 12px;border-radius:8px;outline:none;width:100%;transition:border-color .2s}
+    .archi-input:focus{border-color:var(--accent)}
+    .btn-archi{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 24px;background:rgba(0,255,136,.08);border:1px solid var(--green);color:var(--green);font-family:var(--sans);font-size:.85rem;font-weight:700;border-radius:8px;cursor:pointer;letter-spacing:.06em;transition:all .2s;text-transform:uppercase}
+    .btn-archi:hover{background:rgba(0,255,136,.15);box-shadow:0 4px 20px rgba(0,255,136,.12)}
+    .btn-archi svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+    .archi-loader{display:none;font-family:var(--mono);font-size:.75rem;color:var(--text-dim);letter-spacing:.1em;text-align:center;padding:20px}
+    .archi-loader.active{display:block}
+    .archi-result{display:none;margin-top:20px}
+    .archi-result.visible{display:block}
+    .archi-volumes{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:20px}
+    .archi-vol-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+    .archi-vol-label{font-family:var(--mono);font-size:.62rem;color:var(--text-dim);letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+    .archi-vol-val{font-size:1.1rem;font-weight:700;color:var(--text-head)}
+    .archi-vol-unit{font-family:var(--mono);font-size:.62rem;color:var(--text-dim);margin-left:3px}
+    .archi-vol-card.highlight{border-color:rgba(0,255,136,.4);background:rgba(0,255,136,.03)}
+    .archi-poussees{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:16px}
+    .archi-poussee-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+    .archi-poussee-fluide{font-size:.82rem;font-weight:700;color:var(--text-head);margin-bottom:10px}
+    .archi-poussee-N{font-size:1.6rem;font-weight:800;font-family:var(--mono);color:var(--green);line-height:1}
+    .archi-poussee-unit{font-family:var(--mono);font-size:.68rem;color:var(--text-dim);margin-bottom:6px}
+    .archi-poussee-kg{font-family:var(--mono);font-size:.78rem;color:var(--text-dim)}
+    .archi-poussee-kg span{color:var(--text-head);font-weight:600}
+    .archi-solides{margin-bottom:14px}
+    .archi-solide-row{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;background:var(--bg3);border-radius:6px;margin-bottom:4px;font-size:.78rem}
+    .archi-solide-idx{font-family:var(--mono);font-size:.65rem;color:var(--accent);width:24px;flex-shrink:0}
+    .archi-solide-vol{font-family:var(--mono);color:var(--text-head);font-weight:600}
+    .archi-solide-bbox{font-family:var(--mono);font-size:.65rem;color:var(--text-dim)}
+    .archi-note{font-size:.74rem;color:var(--text-dim);display:flex;gap:6px;line-height:1.5;margin-bottom:4px}
+    .archi-note::before{content:"â†’";color:var(--accent);flex-shrink:0}
+    .archi-badge-assemblage{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.65rem;padding:3px 10px;border-radius:4px;margin-bottom:14px}
+    .archi-badge-assemblage.assemblage{background:rgba(167,139,250,.1);color:var(--purple);border:1px solid rgba(167,139,250,.3)}
+    .archi-badge-assemblage.simple{background:rgba(0,212,255,.08);color:var(--accent);border:1px solid rgba(0,212,255,.25)}
+
+    /* â”€â”€ Finition panel â”€â”€ */
     .finition-panel{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:32px;animation:fadeUp .5s ease both}
     .finition-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:20px}
     .finition-group{display:flex;flex-direction:column;gap:6px}
@@ -302,20 +351,20 @@
     .fin-price-wrap{text-align:right}
     .fin-price-base{font-family:var(--mono);font-size:.72rem;color:var(--text-dim);text-decoration:line-through}
     .fin-price-final{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--accent)}
-    .fin-surcoût{font-family:var(--mono);font-size:.65rem;color:var(--orange);margin-top:2px}
+    .fin-surcoÃ»t{font-family:var(--mono);font-size:.65rem;color:var(--orange);margin-top:2px}
     .fin-lines{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
     .fin-line{font-size:.72rem;display:flex;justify-content:space-between;gap:8px}
     .fin-line-label{color:var(--text-dim)}
     .fin-line-val{color:var(--text-head);font-weight:600;white-space:nowrap}
     .fin-incompat{font-size:.72rem;color:var(--red);display:flex;gap:6px;line-height:1.4}
-    .fin-incompat::before{content:'✕';flex-shrink:0}
+    .fin-incompat::before{content:'âœ•';flex-shrink:0}
     .fin-note{font-size:.7rem;color:#ff9a3a;margin-top:6px;border-top:1px solid var(--border);padding-top:6px}
     .fin-delai{font-family:var(--mono);font-size:.65rem;color:var(--text-dim);margin-top:6px}
     .fin-delai span{color:var(--orange)}
     .fin-loader{display:none;text-align:center;padding:30px;font-family:var(--mono);font-size:.75rem;color:var(--text-dim);letter-spacing:.1em}
     .fin-loader.active{display:block}
 
-    /* ── Délais ── */
+    /* â”€â”€ DÃ©lais â”€â”€ */
     .delais-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:40px}
     .delai-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px 20px;position:relative;overflow:hidden;transition:border-color .2s}
     .delai-card:hover{border-color:var(--border2)}
@@ -339,7 +388,7 @@
     .delai-urgence.ok{background:rgba(0,255,136,.08);color:var(--green);border:1px solid rgba(0,255,136,.25)}
     .delai-urgence.nok{background:rgba(85,96,112,.08);color:var(--text-dim);border:1px solid var(--border)}
 
-    /* ── 3D Viewer ── */
+    /* â”€â”€ 3D Viewer â”€â”€ */
     .viewer-section{margin-bottom:32px}
     .viewer-wrap{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;height:420px}
     .viewer-wrap canvas{display:block;width:100%!important;height:100%!important}
@@ -403,12 +452,12 @@
         <circle cx="84" cy="95" r="2.5" fill="#00d4ff"/>
       </svg>
     </div>
-<div class="badge">v3.2</div>
+<div class="badge">v3.3</div>
   </header>
 
   <div class="hero">
-    <h1>Reconnaissance<br>de <em>procédé</em> de fabrication</h1>
-    <p>Uploadez un fichier STEP et obtenez le procédé optimal avec un devis détaillé adapté au pays de fabrication.</p>
+    <h1>Reconnaissance<br>de <em>procÃ©dÃ©</em> de fabrication</h1>
+    <p>Uploadez un fichier STEP et obtenez le procÃ©dÃ© optimal avec un devis dÃ©taillÃ© adaptÃ© au pays de fabrication.</p>
   </div>
 
   <div class="drop-zone" id="drop-zone">
@@ -416,36 +465,36 @@
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
     </div>
     <div class="drop-title">Glissez votre fichier STEP ici</div>
-    <div class="drop-sub">ou cliquez pour sélectionner —<span>.step</span><span>.stp</span></div>
+    <div class="drop-sub">ou cliquez pour sÃ©lectionner â€”<span>.step</span><span>.stp</span></div>
   </div>
   <input type="file" id="file-input" accept=".step,.stp" />
 
   <!-- Options -->
   <div class="options-row">
     <div class="opt-group">
-      <div class="opt-label">🌍 Pays de fabrication</div>
+      <div class="opt-label">ðŸŒ Pays de fabrication</div>
       <select class="opt-select" id="pays-select">
-        <option value="France">🇫🇷 France</option>
-        <option value="Allemagne">🇩🇪 Allemagne</option>
-        <option value="Pologne">🇵🇱 Pologne</option>
-        <option value="Chine">🇨🇳 Chine</option>
+        <option value="France">ðŸ‡«ðŸ‡· France</option>
+        <option value="Allemagne">ðŸ‡©ðŸ‡ª Allemagne</option>
+        <option value="Pologne">ðŸ‡µðŸ‡± Pologne</option>
+        <option value="Chine">ðŸ‡¨ðŸ‡³ Chine</option>
       </select>
     </div>
     <div class="opt-group">
-      <div class="opt-label">📦 Quantité</div>
+      <div class="opt-label">ðŸ“¦ QuantitÃ©</div>
       <input type="number" class="opt-input" id="qty-input" value="1" min="1" max="10000" placeholder="1" />
     </div>
   </div>
 
   <!-- Bandeau coefficients pays -->
   <div class="country-banner" id="country-banner">
-    <div class="country-flag" id="country-flag">🇫🇷</div>
+    <div class="country-flag" id="country-flag">ðŸ‡«ðŸ‡·</div>
     <div class="country-info">
       <div class="country-name" id="country-name">France</div>
       <div class="country-coeffs">
-        <div class="country-coeff">Machine : <span id="cx-machine">×1.00</span></div>
-        <div class="country-coeff">MdO : <span id="cx-mdo">×1.00</span></div>
-        <div class="country-coeff">Matière : <span id="cx-mat">×1.00</span></div>
+        <div class="country-coeff">Machine : <span id="cx-machine">Ã—1.00</span></div>
+        <div class="country-coeff">MdO : <span id="cx-mdo">Ã—1.00</span></div>
+        <div class="country-coeff">MatiÃ¨re : <span id="cx-mat">Ã—1.00</span></div>
       </div>
       <div class="country-note" id="country-note"></div>
     </div>
@@ -456,17 +505,17 @@
       <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
     </div>
     <div>
-      <div class="file-name" id="file-name">—</div>
-      <div class="file-size" id="file-size">—</div>
+      <div class="file-name" id="file-name">â€”</div>
+      <div class="file-size" id="file-size">â€”</div>
     </div>
-    <button class="file-remove" id="file-remove">✕</button>
+    <button class="file-remove" id="file-remove">âœ•</button>
   </div>
 
   <div class="error-box" id="error-box"></div>
 
   <button class="btn-analyze" id="btn-analyze" disabled>
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-    Analyser et générer le devis
+    Analyser et gÃ©nÃ©rer le devis
   </button>
 
   <div class="loader" id="loader">
@@ -480,32 +529,32 @@
     <div class="reco-card">
       <div class="reco-top">
         <div>
-          <div class="reco-label">PROCÉDÉ OPTIMAL DÉTECTÉ</div>
-          <div class="reco-process" id="reco-process">—</div>
+          <div class="reco-label">PROCÃ‰DÃ‰ OPTIMAL DÃ‰TECTÃ‰</div>
+          <div class="reco-process" id="reco-process">â€”</div>
         </div>
         <div class="reco-confidence">
-          <div class="conf-value" id="conf-value">—</div>
+          <div class="conf-value" id="conf-value">â€”</div>
           <div class="conf-label">CONFIANCE</div>
         </div>
       </div>
-      <div class="reco-summary" id="reco-summary">—</div>
+      <div class="reco-summary" id="reco-summary">â€”</div>
     </div>
 
 
     <div class="viewer-section">
-      <div class="section-label">// VISUALISATION 3D — HEATMAP DIFFICULTÉ D'USINAGE</div>
+      <div class="section-label">// VISUALISATION 3D â€” HEATMAP DIFFICULTÃ‰ D'USINAGE</div>
       <div class="viewer-wrap" id="viewer-wrap">
         <div class="viewer-loader" id="viewer-loader">
           <div class="viewer-spinner"></div>
-          <div class="viewer-loader-text">GÉNÉRATION DU MAILLAGE<em>...</em></div>
+          <div class="viewer-loader-text">GÃ‰NÃ‰RATION DU MAILLAGE<em>...</em></div>
         </div>
-        <div class="viewer-hint">🖱 Clic+drag rotation · Scroll zoom · Clic droit pan</div>
+        <div class="viewer-hint">ðŸ–± Clic+drag rotation Â· Scroll zoom Â· Clic droit pan</div>
         <div class="viewer-info" id="viewer-info"></div>
         <div class="viewer-controls">
           <button class="viewer-btn active" id="btn-heatmap">HEATMAP</button>
           <button class="viewer-btn" id="btn-solid">SOLIDE</button>
           <button class="viewer-btn" id="btn-wire">WIREFRAME</button>
-          <button class="viewer-btn" id="btn-reset-cam">⟳ RESET CAM</button>
+          <button class="viewer-btn" id="btn-reset-cam">âŸ³ RESET CAM</button>
         </div>
       </div>
       <div class="heatmap-legend">
@@ -515,14 +564,14 @@
       </div>
     </div>
 
-    <div class="section-label">// CARACTÉRISTIQUES GÉOMÉTRIQUES</div>
+    <div class="section-label">// CARACTÃ‰RISTIQUES GÃ‰OMÃ‰TRIQUES</div>
     <div class="features-grid" id="features-grid"></div>
 
-    <div class="section-label">// SCORES PAR PROCÉDÉ</div>
+    <div class="section-label">// SCORES PAR PROCÃ‰DÃ‰</div>
     <div class="scores-list" id="scores-list"></div>
 
 
-    <div class="section-label">// DÉLAIS DE FABRICATION ESTIMÉS</div>
+    <div class="section-label">// DÃ‰LAIS DE FABRICATION ESTIMÃ‰S</div>
     <div class="delais-grid" id="delais-grid"></div>
 
     <div class="section-label">// DEVIS ESTIMATIF</div>
@@ -533,27 +582,69 @@
     <div class="devis-grid" id="devis-grid"></div>
 
 
-    <div class="section-label">// TOLÉRANCE & FINITION</div>
+
+    <div class="section-label">// VOLUME MOUILLÃ‰ & POUSSÃ‰E D'ARCHIMÃˆDE</div>
+    <div class="archi-panel">
+      <label class="archi-toggle">
+        <input type="checkbox" id="archi-checkbox" />
+        <span class="archi-toggle-label">Calculer le volume mouillÃ© et la poussÃ©e d'ArchimÃ¨de</span>
+      </label>
+      <div class="archi-toggle-sub">Supporte les piÃ¨ces simples et assemblages multi-solides STEP</div>
+
+      <div class="archi-body" id="archi-body">
+        <div class="archi-label" style="margin-bottom:10px">Fluide(s) de calcul</div>
+        <div class="archi-fluides" id="archi-fluides">
+          <button class="archi-fluide-btn active" data-key="eau_douce">ðŸ’§ Eau douce</button>
+          <button class="archi-fluide-btn active" data-key="eau_mer">ðŸŒŠ Eau de mer</button>
+          <button class="archi-fluide-btn" data-key="huile">ðŸ›¢ Huile minÃ©rale</button>
+          <button class="archi-fluide-btn" data-key="ethanol">âš—ï¸ Ã‰thanol</button>
+          <button class="archi-fluide-btn" data-key="mercure">ðŸ”¬ Mercure</button>
+          <button class="archi-fluide-btn" data-key="personnalise">âœï¸ PersonnalisÃ©</button>
+        </div>
+
+        <div class="archi-options">
+          <div class="archi-group" id="archi-perso-group" style="display:none">
+            <div class="archi-label">DensitÃ© personnalisÃ©e (kg/mÂ³)</div>
+            <input type="number" class="archi-input" id="archi-densite" placeholder="ex: 1200" min="1" max="20000" />
+          </div>
+          <div class="archi-group">
+            <div class="archi-label">Profondeur d'immersion (mm)</div>
+            <input type="number" class="archi-input" id="archi-immersion" placeholder="Vide = immersion totale" min="0" />
+          </div>
+        </div>
+
+        <button class="btn-archi" id="btn-archi" disabled>
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 6v6l4 2"/></svg>
+          Calculer la poussÃ©e d'ArchimÃ¨de
+        </button>
+
+        <div class="archi-loader" id="archi-loader">ANALYSE DU VOLUME MOUILLÃ‰...</div>
+
+        <div class="archi-result" id="archi-result"></div>
+      </div>
+    </div>
+
+    <div class="section-label">// TOLÃ‰RANCE & FINITION</div>
     <div class="finition-panel">
       <div class="finition-grid">
         <div class="finition-group">
-          <div class="finition-label">Rugosité Ra</div>
+          <div class="finition-label">RugositÃ© Ra</div>
           <select class="finition-select" id="fin-rugosite">
             <option value="Aucune">Aucune exigence</option>
-            <option value="Ra 6.3">Ra 6.3 µm — Brut</option>
-            <option value="Ra 3.2">Ra 3.2 µm — Standard</option>
-            <option value="Ra 1.6">Ra 1.6 µm — Soigné</option>
-            <option value="Ra 0.8">Ra 0.8 µm — Rectifié</option>
+            <option value="Ra 6.3">Ra 6.3 Âµm â€” Brut</option>
+            <option value="Ra 3.2">Ra 3.2 Âµm â€” Standard</option>
+            <option value="Ra 1.6">Ra 1.6 Âµm â€” SoignÃ©</option>
+            <option value="Ra 0.8">Ra 0.8 Âµm â€” RectifiÃ©</option>
           </select>
         </div>
         <div class="finition-group">
-          <div class="finition-label">Tolérance ISO</div>
+          <div class="finition-label">TolÃ©rance ISO</div>
           <select class="finition-select" id="fin-tolerance">
-            <option value="Libre">Libre — Pas d'exigence</option>
-            <option value="IT11">IT11 — ±0.2mm</option>
-            <option value="IT8">IT8 — ±0.05mm</option>
-            <option value="IT7">IT7 — ±0.02mm</option>
-            <option value="IT6">IT6 — ±0.01mm</option>
+            <option value="Libre">Libre â€” Pas d'exigence</option>
+            <option value="IT11">IT11 â€” Â±0.2mm</option>
+            <option value="IT8">IT8 â€” Â±0.05mm</option>
+            <option value="IT7">IT7 â€” Â±0.02mm</option>
+            <option value="IT6">IT6 â€” Â±0.01mm</option>
           </select>
         </div>
         <div class="finition-group">
@@ -563,7 +654,7 @@
             <option value="Sablage">Sablage / grenaillage</option>
             <option value="Anodisation">Anodisation (alu)</option>
             <option value="Anodisation dure">Anodisation dure (alu)</option>
-            <option value="Zingage">Zingage électrolytique (acier)</option>
+            <option value="Zingage">Zingage Ã©lectrolytique (acier)</option>
             <option value="Passivation">Passivation (inox)</option>
             <option value="Peinture">Peinture / thermolaquage</option>
           </select>
@@ -577,7 +668,7 @@
       <div class="fin-loader" id="fin-loader">CALCUL EN COURS...</div>
 
       <div class="finition-result" id="finition-result">
-        <div class="section-label" style="margin-top:16px">// DEVIS AVEC TOLÉRANCE & FINITION</div>
+        <div class="section-label" style="margin-top:16px">// DEVIS AVEC TOLÃ‰RANCE & FINITION</div>
         <div class="finition-cards" id="finition-cards"></div>
       </div>
     </div>
@@ -591,24 +682,24 @@
 </div>
 
 <script>
-  // URL API : même origine en prod, localhost en dev
+  // URL API : mÃªme origine en prod, localhost en dev
   const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:8000'
     : window.location.origin;
   const COLORS = {
     'Impression 3D FDM':        '#00d4ff',
-    'Impression 3D SLA/Résine': '#a78bfa',
-    'Découpe laser':            '#00ff88',
+    'Impression 3D SLA/RÃ©sine': '#a78bfa',
+    'DÃ©coupe laser':            '#00ff88',
     'Usinage CNC':              '#ff8c00',
-    'Tôlerie / Pliage':        '#ff6b9d',
+    'TÃ´lerie / Pliage':        '#ff6b9d',
   };
 
-  // Données pays en local (miroir du backend)
+  // DonnÃ©es pays en local (miroir du backend)
   const COUNTRIES_DATA = {
-    France:    { flag:'🇫🇷', cx_machine:1.00, cx_mdo:1.00, cx_mat:1.00, note:'Référence — coûts Europe occidentale' },
-    Allemagne: { flag:'🇩🇪', cx_machine:1.10, cx_mdo:1.18, cx_mat:0.97, note:'Salaires élevés, excellent sourcing métaux' },
-    Pologne:   { flag:'🇵🇱', cx_machine:0.72, cx_mdo:0.38, cx_mat:0.92, note:'Main d\'œuvre très compétitive, forte industrie mécanique' },
-    Chine:     { flag:'🇨🇳', cx_machine:0.55, cx_mdo:0.18, cx_mat:0.75, note:'Coûts très bas — prévoir frais logistique et délais import' },
+    France:    { flag:'ðŸ‡«ðŸ‡·', cx_machine:1.00, cx_mdo:1.00, cx_mat:1.00, note:'RÃ©fÃ©rence â€” coÃ»ts Europe occidentale' },
+    Allemagne: { flag:'ðŸ‡©ðŸ‡ª', cx_machine:1.10, cx_mdo:1.18, cx_mat:0.97, note:'Salaires Ã©levÃ©s, excellent sourcing mÃ©taux' },
+    Pologne:   { flag:'ðŸ‡µðŸ‡±', cx_machine:0.72, cx_mdo:0.38, cx_mat:0.92, note:'Main d\'Å“uvre trÃ¨s compÃ©titive, forte industrie mÃ©canique' },
+    Chine:     { flag:'ðŸ‡¨ðŸ‡³', cx_machine:0.55, cx_mdo:0.18, cx_mat:0.75, note:'CoÃ»ts trÃ¨s bas â€” prÃ©voir frais logistique et dÃ©lais import' },
   };
 
   const dropZone    = document.getElementById('drop-zone');
@@ -628,15 +719,15 @@
 
   let selectedFile = null;
 
-  // ── Sélecteur pays → bandeau coefficients ──
+  // â”€â”€ SÃ©lecteur pays â†’ bandeau coefficients â”€â”€
   function updateCountryBanner(pays) {
     const c = COUNTRIES_DATA[pays];
     if (!c) return;
     document.getElementById('country-flag').textContent = c.flag;
     document.getElementById('country-name').textContent = pays;
-    document.getElementById('cx-machine').textContent = `×${c.cx_machine.toFixed(2)}`;
-    document.getElementById('cx-mdo').textContent     = `×${c.cx_mdo.toFixed(2)}`;
-    document.getElementById('cx-mat').textContent     = `×${c.cx_mat.toFixed(2)}`;
+    document.getElementById('cx-machine').textContent = `Ã—${c.cx_machine.toFixed(2)}`;
+    document.getElementById('cx-mdo').textContent     = `Ã—${c.cx_mdo.toFixed(2)}`;
+    document.getElementById('cx-mat').textContent     = `Ã—${c.cx_mat.toFixed(2)}`;
     document.getElementById('country-note').textContent = c.note;
     countryBanner.classList.add('visible');
   }
@@ -644,7 +735,7 @@
   paysSelect.addEventListener('change', () => updateCountryBanner(paysSelect.value));
   updateCountryBanner('France');
 
-  // ── Drag & drop ──
+  // â”€â”€ Drag & drop â”€â”€
   dropZone.addEventListener('click', () => fileInput.click());
   dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
   dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
@@ -655,7 +746,7 @@
   fileInput.addEventListener('change', () => { if (fileInput.files[0]) setFile(fileInput.files[0]); });
 
   function setFile(f) {
-    if (!f.name.match(/\.(step|stp)$/i)) { showError('Format non supporté. Utilisez .step ou .stp'); return; }
+    if (!f.name.match(/\.(step|stp)$/i)) { showError('Format non supportÃ©. Utilisez .step ou .stp'); return; }
     selectedFile = f;
     fileName.textContent = f.name;
     fileSize.textContent = formatSize(f.size);
@@ -665,6 +756,10 @@
     results.classList.remove('visible');
     lastFile = null;
     document.getElementById('btn-finition').disabled = true;
+    btnArchi.disabled = true;
+    archiCheckbox.checked = false;
+    archiBody.classList.remove('visible');
+    archiResult.classList.remove('visible');
     document.getElementById('finition-result').classList.remove('visible');
   }
 
@@ -677,18 +772,26 @@
     results.classList.remove('visible');
     lastFile = null;
     document.getElementById('btn-finition').disabled = true;
+    btnArchi.disabled = true;
+    archiCheckbox.checked = false;
+    archiBody.classList.remove('visible');
+    archiResult.classList.remove('visible');
     document.getElementById('finition-result').classList.remove('visible');
     loader.classList.remove('active');
     hideError();
   }
 
-  // ── Analyze ──
+  // â”€â”€ Analyze â”€â”€
   btnAnalyze.addEventListener('click', async () => {
     if (!selectedFile) return;
     hideError();
     results.classList.remove('visible');
     lastFile = null;
     document.getElementById('btn-finition').disabled = true;
+    btnArchi.disabled = true;
+    archiCheckbox.checked = false;
+    archiBody.classList.remove('visible');
+    archiResult.classList.remove('visible');
     document.getElementById('finition-result').classList.remove('visible');
     loader.classList.add('active');
     btnAnalyze.disabled = true;
@@ -710,14 +813,15 @@
       lastFile = selectedFile;
       document.getElementById('btn-finition').disabled = false;
       document.getElementById('finition-result').classList.remove('visible');
+      updateArchiBtn();
     } catch(err) {
       loader.classList.remove('active');
       btnAnalyze.disabled = false;
-      showError('Erreur : ' + err.message + '\n\nVérifiez que l\'API tourne sur localhost:8000');
+      showError('Erreur : ' + err.message + '\n\nVÃ©rifiez que l\'API tourne sur localhost:8000');
     }
   });
 
-  // ── Render ──
+  // â”€â”€ Render â”€â”€
   function renderResults(data) {
     document.getElementById('reco-process').textContent = data.recommended_process;
     document.getElementById('conf-value').textContent   = Math.round(data.confidence * 100) + '%';
@@ -725,16 +829,16 @@
 
     const f = data.features;
     const featDefs = [
-      { label:'DIMENSIONS',   value:`${f.bbox_x}×${f.bbox_y}×${f.bbox_z}`, unit:'mm' },
-      { label:'VOLUME',       value:formatNum(f.volume_mm3), unit:'mm³' },
-      { label:'SURFACE',      value:formatNum(f.surface_mm2), unit:'mm²' },
-      { label:'SOLIDITÉ',     value:(f.solidity*100).toFixed(1), unit:'%' },
+      { label:'DIMENSIONS',   value:`${f.bbox_x}Ã—${f.bbox_y}Ã—${f.bbox_z}`, unit:'mm' },
+      { label:'VOLUME',       value:formatNum(f.volume_mm3), unit:'mmÂ³' },
+      { label:'SURFACE',      value:formatNum(f.surface_mm2), unit:'mmÂ²' },
+      { label:'SOLIDITÃ‰',     value:(f.solidity*100).toFixed(1), unit:'%' },
       { label:'RATIO PLAT',   value:(f.flatness_ratio*100).toFixed(2), unit:'%' },
       { label:'FACES PLANES', value:(f.planar_face_ratio*100).toFixed(0), unit:'%' },
-      { label:'ÉP. MIN',      value:f.wall_thickness_min, unit:'mm' },
+      { label:'Ã‰P. MIN',      value:f.wall_thickness_min, unit:'mm' },
       { label:'NB FACES',     value:f.face_count, unit:'' },
-      { label:'PIÈCE PLATE',  bool:f.is_flat },
-      { label:'TRÈS PLATE',   bool:f.is_very_flat },
+      { label:'PIÃˆCE PLATE',  bool:f.is_flat },
+      { label:'TRÃˆS PLATE',   bool:f.is_very_flat },
       { label:'PAROIS FINES', bool:f.has_thin_walls },
       { label:'COURBES CPXS', bool:f.has_complex_curves },
       { label:'SURPLOMBS',    bool:f.estimated_overhang },
@@ -751,7 +855,7 @@
       const warnings = s.warnings.map(w => `<div class="score-warning">${w}</div>`).join('');
       return `<div class="score-row ${i===0?'best':''}">
         <div class="score-header">
-          <div class="score-name">${i===0?'★ ':''}${s.name}
+          <div class="score-name">${i===0?'â˜… ':''}${s.name}
             <span class="score-feasible ${s.feasible?'ok':'nok'}">${s.feasible?'FAISABLE':'NON FAISABLE'}</span>
           </div>
           <div class="score-num">${s.score}<span style="font-size:.62rem;color:var(--text-dim)">/100</span></div>
@@ -764,10 +868,10 @@
     // Badge pays dans le devis
     const c = COUNTRIES_DATA[data.pays] || {};
     document.getElementById('devis-pays-badge').innerHTML =
-      `<span>${c.flag||''} ${data.pays_label}</span>&nbsp;·&nbsp;
-       <span style="color:var(--accent)">M ×${c.cx_machine?.toFixed(2)||1}</span>&nbsp;
-       <span style="color:var(--purple)">MdO ×${c.cx_mdo?.toFixed(2)||1}</span>&nbsp;
-       <span style="color:var(--green)">Mat ×${c.cx_mat?.toFixed(2)||1}</span>`;
+      `<span>${c.flag||''} ${data.pays_label}</span>&nbsp;Â·&nbsp;
+       <span style="color:var(--accent)">M Ã—${c.cx_machine?.toFixed(2)||1}</span>&nbsp;
+       <span style="color:var(--purple)">MdO Ã—${c.cx_mdo?.toFixed(2)||1}</span>&nbsp;
+       <span style="color:var(--green)">Mat Ã—${c.cx_mat?.toFixed(2)||1}</span>`;
 
     // Tabs devis
     const procedes    = Object.keys(data.devis);
@@ -805,15 +909,15 @@
           </div>`;
         }).join('');
         const urgTag = d.urgence_possible
-          ? `<div class="delai-urgence ok">⚡ EXPRESS +${d.urgence_surcoût_pct}%</div>`
-          : `<div class="delai-urgence nok">— Pas d'express</div>`;
+          ? `<div class="delai-urgence ok">âš¡ EXPRESS +${d.urgence_surcoÃ»t_pct}%</div>`
+          : `<div class="delai-urgence nok">â€” Pas d'express</div>`;
         return `<div class="delai-card ${speed} ${isReco?'best':''}">
-          <div class="delai-procede">${isReco?'★ ':''}${procede}</div>
+          <div class="delai-procede">${isReco?'â˜… ':''}${procede}</div>
           <div class="delai-total">
             <div class="delai-jours">${d.total_j}</div>
-            <div class="delai-unit">jours ouvrés</div>
+            <div class="delai-unit">jours ouvrÃ©s</div>
           </div>
-          <div class="delai-semaines">≈ ${d.total_semaines} semaines</div>
+          <div class="delai-semaines">â‰ˆ ${d.total_semaines} semaines</div>
           <div class="delai-bar-wrap">${bars}</div>
           ${urgTag}
         </div>`;
@@ -827,7 +931,7 @@
 
   function renderDevis(liste, procede, recommended, quantite) {
     if (!liste?.length) {
-      document.getElementById('devis-grid').innerHTML = '<div style="color:var(--text-dim);font-family:var(--mono);font-size:.8rem">Aucun devis pour ce procédé.</div>';
+      document.getElementById('devis-grid').innerHTML = '<div style="color:var(--text-dim);font-family:var(--mono);font-size:.8rem">Aucun devis pour ce procÃ©dÃ©.</div>';
       return;
     }
     document.getElementById('devis-grid').innerHTML = liste.map(d => {
@@ -841,7 +945,7 @@
         <div class="devis-line">
           <div class="devis-line-top">
             <span class="devis-line-label">${det.label}</span>
-            <span class="devis-line-val">${det.montant.toFixed(2)} €</span>
+            <span class="devis-line-val">${det.montant.toFixed(2)} â‚¬</span>
           </div>
           <div class="devis-line-detail">${det.detail}</div>
         </div><div class="devis-sep"></div>`).join('');
@@ -850,7 +954,7 @@
         ? `<div class="devis-notes">${d.notes.map(n=>`<div class="devis-note">${n}</div>`).join('')}</div>`
         : '';
       const unitaire = quantite > 1
-        ? `<div class="devis-unitaire">Unitaire : <strong style="color:var(--text-head)">${d.cout_total_unitaire.toFixed(2)} €</strong> × ${quantite} pièces</div>`
+        ? `<div class="devis-unitaire">Unitaire : <strong style="color:var(--text-head)">${d.cout_total_unitaire.toFixed(2)} â‚¬</strong> Ã— ${quantite} piÃ¨ces</div>`
         : '';
 
       return `<div class="devis-card ${isReco?'recommended':''}">
@@ -860,24 +964,24 @@
             <div class="devis-mat-cat">${procede}</div>
           </div>
           <div>
-            <div class="devis-total-val">${d.cout_total.toFixed(2)} €</div>
+            <div class="devis-total-val">${d.cout_total.toFixed(2)} â‚¬</div>
             <div class="devis-total-label">${quantite>1?'TOTAL '+quantite+' PCS':'UNITAIRE'}</div>
           </div>
         </div>
         <div class="devis-card-body">
           <div class="devis-time">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Temps fab. estimé : ${d.temps_fabrication_h.toFixed(2)} h
+            Temps fab. estimÃ© : ${d.temps_fabrication_h.toFixed(2)} h
           </div>
 
-          <!-- Barre de répartition -->
+          <!-- Barre de rÃ©partition -->
           <div class="devis-bar">
             <div class="devis-bar-seg" style="width:${pMat}%;background:var(--green)"></div>
             <div class="devis-bar-seg" style="width:${pMach}%;background:var(--accent)"></div>
             <div class="devis-bar-seg" style="width:${pMdo}%;background:var(--purple)"></div>
           </div>
           <div class="devis-bar-legend">
-            <div class="devis-bar-item"><div class="devis-bar-dot" style="background:var(--green)"></div>Matière ${pMat}%</div>
+            <div class="devis-bar-item"><div class="devis-bar-dot" style="background:var(--green)"></div>MatiÃ¨re ${pMat}%</div>
             <div class="devis-bar-item"><div class="devis-bar-dot" style="background:var(--accent)"></div>Machine ${pMach}%</div>
             <div class="devis-bar-item"><div class="devis-bar-dot" style="background:var(--purple)"></div>MdO ${pMdo}%</div>
           </div>
@@ -896,7 +1000,137 @@
 
 
 
-  // ── Tolérance & Finition ──────────────────
+
+  // â”€â”€ ArchimÃ¨de â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  const archiCheckbox = document.getElementById('archi-checkbox');
+  const archiBody     = document.getElementById('archi-body');
+  const btnArchi      = document.getElementById('btn-archi');
+  const archiLoader   = document.getElementById('archi-loader');
+  const archiResult   = document.getElementById('archi-result');
+  let archiFluidesActifs = new Set(['eau_douce', 'eau_mer']);
+
+  archiCheckbox.addEventListener('change', () => {
+    archiBody.classList.toggle('visible', archiCheckbox.checked);
+  });
+
+  document.querySelectorAll('.archi-fluide-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.key;
+      if (archiFluidesActifs.has(key)) {
+        if (archiFluidesActifs.size === 1) return; // au moins 1
+        archiFluidesActifs.delete(key);
+        btn.classList.remove('active');
+      } else {
+        archiFluidesActifs.add(key);
+        btn.classList.add('active');
+      }
+      document.getElementById('archi-perso-group').style.display =
+        archiFluidesActifs.has('personnalise') ? 'flex' : 'none';
+    });
+  });
+
+  // Activer btn-archi quand fichier dispo
+  function updateArchiBtn() {
+    btnArchi.disabled = !lastFile;
+  }
+
+  btnArchi.addEventListener('click', async () => {
+    if (!lastFile) return;
+    archiLoader.classList.add('active');
+    archiResult.classList.remove('visible');
+
+    const fluides   = Array.from(archiFluidesActifs).join(',');
+    const densite   = document.getElementById('archi-densite').value;
+    const immersion = document.getElementById('archi-immersion').value;
+
+    let url = `${API}/archimede?fluides=${encodeURIComponent(fluides)}`;
+    if (densite)   url += `&densite_perso=${densite}`;
+    if (immersion) url += `&immersion_mm=${immersion}`;
+
+    const form = new FormData();
+    form.append('file', lastFile);
+
+    try {
+      const res  = await fetch(url, { method: 'POST', body: form });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail);
+      renderArchimede(data);
+    } catch(e) {
+      archiResult.innerHTML = `<div style="color:var(--red);font-family:var(--mono);font-size:.8rem">Erreur : ${e.message}</div>`;
+      archiResult.classList.add('visible');
+    } finally {
+      archiLoader.classList.remove('active');
+    }
+  });
+
+  function renderArchimede(data) {
+    const v = data.volumes;
+    const isAssembly = data.est_assemblage;
+
+    let html = '';
+
+    // Badge type
+    html += `<div class="archi-badge-assemblage ${isAssembly ? 'assemblage' : 'simple'}">
+      ${isAssembly ? 'ðŸ”© Assemblage â€” ' + data.nb_solides + ' solides dÃ©tectÃ©s' : 'â¬¡ PiÃ¨ce simple â€” 1 solide'}
+      ${data.union_reussie ? ' Â· Union âœ…' : ' Â· Bbox approx.'}
+    </div>`;
+
+    // Volumes
+    html += `<div class="archi-vol-label" style="margin-bottom:8px">VOLUMES</div>
+    <div class="archi-volumes">
+      <div class="archi-vol-card highlight">
+        <div class="archi-vol-label">VOL. MOUILLÃ‰ (enveloppe)</div>
+        <div class="archi-vol-val">${v.enveloppe_cm3.toFixed(1)}<span class="archi-vol-unit">cmÂ³</span></div>
+      </div>
+      <div class="archi-vol-card highlight">
+        <div class="archi-vol-label">EN LITRES</div>
+        <div class="archi-vol-val">${v.enveloppe_L.toFixed(4)}<span class="archi-vol-unit">L</span></div>
+      </div>
+      <div class="archi-vol-card highlight">
+        <div class="archi-vol-label">EN MÂ³</div>
+        <div class="archi-vol-val">${v.enveloppe_m3.toExponential(3)}<span class="archi-vol-unit">mÂ³</span></div>
+      </div>
+      ${isAssembly ? `<div class="archi-vol-card">
+        <div class="archi-vol-label">Somme volumes individuels</div>
+        <div class="archi-vol-val">${(v.somme_mm3/1000).toFixed(1)}<span class="archi-vol-unit">cmÂ³</span></div>
+      </div>` : ''}
+    </div>`;
+
+    // Solides (si assemblage)
+    if (isAssembly && data.solides.length > 0) {
+      html += `<div class="archi-label" style="margin-bottom:8px">SOLIDES DE L'ASSEMBLAGE</div>
+      <div class="archi-solides">
+        ${data.solides.map(s => `
+          <div class="archi-solide-row">
+            <span class="archi-solide-idx">#${s.index}</span>
+            <span class="archi-solide-vol">${s.volume_cm3.toFixed(1)} cmÂ³</span>
+            <span class="archi-solide-bbox">${s.bbox}</span>
+          </div>`).join('')}
+      </div>`;
+    }
+
+    // PoussÃ©es
+    html += `<div class="archi-label" style="margin-bottom:8px">POUSSÃ‰E D'ARCHIMÃˆDE</div>
+    <div class="archi-poussees">
+      ${data.poussees.map(p => `
+        <div class="archi-poussee-card">
+          <div class="archi-poussee-fluide">${p.fluide_label}</div>
+          <div class="archi-poussee-N">${p.poussee_N.toFixed(2)}</div>
+          <div class="archi-poussee-unit">Newtons Â· Ï = ${p.densite_kg_m3} kg/mÂ³ Â· ${p.immersion}</div>
+          <div class="archi-poussee-kg">Ã‰quivalent masse : <span>${p.poussee_kg_equiv.toFixed(4)} kg</span></div>
+        </div>`).join('')}
+    </div>`;
+
+    // Notes
+    if (data.notes.length) {
+      html += data.notes.map(n => `<div class="archi-note">${n}</div>`).join('');
+    }
+
+    archiResult.innerHTML = html;
+    archiResult.classList.add('visible');
+  }
+
+  // â”€â”€ TolÃ©rance & Finition â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let lastFile = null;
 
   document.getElementById('btn-finition').addEventListener('click', async () => {
@@ -939,26 +1173,26 @@
             ${d.incompatibilites.map(i => `<div class="fin-incompat">${i}</div>`).join('')}
           </div>`);
         } else {
-          const hasSurcoût = d.surcoût_total > 0;
+          const hasSurcoÃ»t = d.surcoÃ»t_total > 0;
           const lines = d.lignes_devis.map(l => `
             <div class="fin-line">
               <span class="fin-line-label">${l.label}</span>
-              <span class="fin-line-val">+${l.montant.toFixed(2)} €</span>
+              <span class="fin-line-val">+${l.montant.toFixed(2)} â‚¬</span>
             </div>
             <div style="font-family:var(--mono);font-size:.6rem;color:var(--text-dim);margin-bottom:4px;padding-left:8px">${l.detail}</div>
           `).join('');
-          const notes = d.notes.map(n => `<div class="fin-note">ℹ ${n}</div>`).join('');
+          const notes = d.notes.map(n => `<div class="fin-note">â„¹ ${n}</div>`).join('');
           const delaiExtra = d.delai_extra_j > 0
-            ? `<div class="fin-delai">Délai supplémentaire : <span>+${d.delai_extra_j} j ouvrés</span></div>` : '';
-          const totalLabel = quantite > 1 ? `× ${quantite} = ${d.cout_total.toFixed(2)} €` : '';
+            ? `<div class="fin-delai">DÃ©lai supplÃ©mentaire : <span>+${d.delai_extra_j} j ouvrÃ©s</span></div>` : '';
+          const totalLabel = quantite > 1 ? `Ã— ${quantite} = ${d.cout_total.toFixed(2)} â‚¬` : '';
 
           cards.push(`<div class="fin-card">
             <div class="fin-card-top">
               <div><div class="fin-procede">${procede}</div><div class="fin-mat">${d.materiau}</div></div>
               <div class="fin-price-wrap">
-                ${hasSurcoût ? `<div class="fin-price-base">${d.cout_base.toFixed(2)} €</div>` : ''}
-                <div class="fin-price-final">${d.cout_final.toFixed(2)} €</div>
-                ${hasSurcoût ? `<div class="fin-surcoût">+${d.surcoût_total.toFixed(2)} € finition</div>` : ''}
+                ${hasSurcoÃ»t ? `<div class="fin-price-base">${d.cout_base.toFixed(2)} â‚¬</div>` : ''}
+                <div class="fin-price-final">${d.cout_final.toFixed(2)} â‚¬</div>
+                ${hasSurcoÃ»t ? `<div class="fin-surcoÃ»t">+${d.surcoÃ»t_total.toFixed(2)} â‚¬ finition</div>` : ''}
               </div>
             </div>
             <div class="fin-lines">${lines}</div>
@@ -974,7 +1208,7 @@
     document.getElementById('finition-result').classList.add('visible');
   }
 
-  // ── 3D Viewer ──────────────────────────────
+  // â”€â”€ 3D Viewer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let renderer, scene, camera, controls, meshObj, wireMesh;
   let currentMode = 'heatmap';
 
@@ -1074,7 +1308,7 @@
     wireMesh = new THREE.LineSegments(wgeo, new THREE.LineBasicMaterial({ color:0x1e2730, transparent:true, opacity:0.4 }));
     wireMesh.visible = false;
 
-    // Centre la pièce
+    // Centre la piÃ¨ce
     geo.computeBoundingBox();
     const box = geo.boundingBox;
     const center = new THREE.Vector3();
@@ -1085,7 +1319,7 @@
     scene.add(meshObj);
     scene.add(wireMesh);
 
-    // Positionne la caméra
+    // Positionne la camÃ©ra
     const size = new THREE.Vector3();
     box.getSize(size);
     const maxDim = Math.max(size.x, size.y, size.z);
