@@ -194,6 +194,92 @@ async def apply_finition(
         if os.path.exists(tmp_path):
             os.unlink(tmp_path)
 
+
+# ─────────────────────────────────────────────
+#  Endpoint /archimede
+# ─────────────────────────────────────────────
+
+from app.archimede import calc_archimede, FLUIDES_PREDEFINIS
+from typing import Optional
+
+@app.get("/archimede/fluides")
+def get_fluides():
+    """Retourne la liste des fluides disponibles."""
+    return {k: {"label": v["label"], "densite": v["densite"], "emoji": v["emoji"]} for k, v in FLUIDES_PREDEFINIS.items()}
+
+
+@app.post("/archimede")
+async def archimede(
+    file: UploadFile = File(...),
+    fluides: str = Query(default="eau_douce,eau_mer"),
+    densite_perso: Optional[float] = Query(default=None),
+    immersion_mm: Optional[float] = Query(default=None),
+):
+    """
+    Calcule le volume mouillé et la poussée d'Archimède.
+    Supporte les pièces simples et assemblages multi-solides.
+    """
+    filename = file.filename or ""
+    if not filename.lower().endswith((".step", ".stp")):
+        raise HTTPException(400, "Format non supporté")
+
+    fluides_keys = [f.strip() for f in fluides.split(",") if f.strip()]
+
+    suffix = ".step" if filename.lower().endswith(".step") else ".stp"
+    with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+        tmp.write(await file.read())
+        tmp_path = tmp.name
+
+    try:
+        result = calc_archimede(
+            step_path=tmp_path,
+            fluides_keys=fluides_keys,
+            densite_perso=densite_perso,
+            immersion_profondeur_mm=immersion_mm,
+        )
+
+        return JSONResponse(content={
+            "success": True,
+            "nb_solides": result.nb_solides,
+            "est_assemblage": result.est_assemblage,
+            "union_reussie": result.union_reussie,
+            "volumes": {
+                "somme_mm3":     result.volume_somme_mm3,
+                "enveloppe_mm3": result.volume_enveloppe_mm3,
+                "enveloppe_cm3": result.volume_enveloppe_cm3,
+                "enveloppe_L":   result.volume_enveloppe_L,
+                "enveloppe_m3":  result.volume_enveloppe_m3,
+            },
+            "bbox": {"x": result.bbox_x, "y": result.bbox_y, "z": result.bbox_z},
+            "solides": [
+                {
+                    "index": s.index,
+                    "volume_mm3": s.volume_mm3,
+                    "volume_cm3": s.volume_cm3,
+                    "volume_L": s.volume_L,
+                    "bbox": f"{s.bbox_x:.0f}×{s.bbox_y:.0f}×{s.bbox_z:.0f}",
+                }
+                for s in result.solides
+            ],
+            "poussees": [
+                {
+                    "fluide_key":      p.fluide_key,
+                    "fluide_label":    p.fluide_label,
+                    "densite_kg_m3":   p.densite_kg_m3,
+                    "poussee_N":       p.poussee_N,
+                    "poussee_kg_equiv":p.poussee_kg_equiv,
+                    "immersion":       p.immersion,
+                }
+                for p in result.poussees
+            ],
+            "notes": result.notes,
+        })
+    except Exception as e:
+        raise HTTPException(500, f"Erreur Archimède : {str(e)}\n{traceback.format_exc()}")
+    finally:
+        if os.path.exists(tmp_path):
+            os.unlink(tmp_path)
+
 # ─────────────────────────────────────────────
 #  Endpoint /mesh — convertit STEP → STL binaire
 #  + calcule la heatmap par face (difficulté usinage)
