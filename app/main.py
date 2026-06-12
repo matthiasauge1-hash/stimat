@@ -21,14 +21,30 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request as StarletteRequest
+
+class UTF8Middleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: StarletteRequest, call_next):
+        response = await call_next(request)
+        if "text/html" in response.headers.get("content-type", ""):
+            response.headers["content-type"] = "text/html; charset=utf-8"
+        return response
+
+app.add_middleware(UTF8Middleware)
+
 
 @app.get("/", response_class=HTMLResponse)
 def root():
-    """Sert le frontend index.html."""
+    """Sert le frontend index.html avec encodage UTF-8 explicite."""
     index_path = os.path.join(os.path.dirname(__file__), "..", "index.html")
     if os.path.exists(index_path):
         with open(index_path, "r", encoding="utf-8") as f:
-            return HTMLResponse(content=f.read())
+            html = f.read()
+        return HTMLResponse(
+            content=html,
+            headers={"Content-Type": "text/html; charset=utf-8"}
+        )
     return HTMLResponse(content="<h1>Stima API</h1><p>Frontend non trouvé.</p>")
 
 
